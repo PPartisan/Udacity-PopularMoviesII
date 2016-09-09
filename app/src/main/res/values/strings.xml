@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Popular Movies II</string>
+
+    <!-- Grid Items -->
+    <string name="grid_item_thumbnails_content_desc">Grid Item Thumbnail</string>
+
+    <!-- Main Menu -->
+    <string name="action_sort">Sort</string>
+    <string name="action_sort_by_popularity">Sort By: Popularity</string>
+    <string name="action_sort_by_average_votes">Sort By: Highest Rated</string>
+    <string name="action_favourites">Favourites</string>
+
+    <!-- Detail Fragment -->
+    <string name="df_thumbnail_content_desc">Movie Poster Image</string>
+    <string name="df_synopsis_title">Synopsis</string>
+    <string name="df_rating_title">Rating</string>
+    <string name="df_rating_content">%1$s out of 10</string>
+    <string name="df_release_date_title">Release Date</string>
+    <string name="df_action_favourites_showing">Favourites Showing</string>
+    <string name="df_action_live_data_showing">Live Data Showing</string>
+
+    <!-- Detail Fragment - Thumbnails List -->
+    <string name="df_tl_title">Trailers</string>
+    <string name="df_tl_content_desc">Trailer Thumbnail Image</string>
+
+    <!-- Detail Fragment - Reviews List -->
+    <string name="df_rl_title">Reviews</string>
+    <string name="df_rl_expand_title">Review By: %1$s</string>
+
+    <!-- Detail Fragment - Snackbar -->
+    <string name="df_sb_undo">Undo</string>
+    <string name="df_sb_removed_from_favourites">Removed From Favourites</string>
+    <string name="df_sb_added_to_favourites">Added To Favourites</string>
+    <string name="df_sb_restored_to_favourites">Restored To Favourites</string>
+
+    <!-- Error Dialog -->
+    <string name="alert_no_connection_content">Connect to the internet for more results</string>
+    <string name="alert_dismiss">Dismiss</string>
+
+    <!-- -->
+
+</resources>
