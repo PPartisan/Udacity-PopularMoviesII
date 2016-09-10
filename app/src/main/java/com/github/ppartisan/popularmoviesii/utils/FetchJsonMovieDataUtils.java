@@ -1,6 +1,5 @@
 package com.github.ppartisan.popularmoviesii.utils;
 
-import android.content.res.Resources;
 import android.net.Uri;
 import android.util.Log;
 
@@ -14,7 +13,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
 
 
@@ -133,7 +131,7 @@ public final class FetchJsonMovieDataUtils {
             return OUTPUT_DATE_FORMAT.format(INPUT_DATE_FORMAT.parse(inputDate));
         } catch (ParseException e) {
             e.printStackTrace();
-            return null;
+            return inputDate;
         }
 
     }

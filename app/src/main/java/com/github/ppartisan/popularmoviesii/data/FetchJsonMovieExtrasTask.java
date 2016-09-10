@@ -32,7 +32,7 @@ public class FetchJsonMovieExtrasTask extends AsyncTask<String, Void, FetchJsonM
 
     @Override
     protected void onPostExecute(Result results) {
-        if (mListener.get() != null && results.isNotNull()) {
+        if (mListener.get() != null && results.isNotHoldingNullVariables()) {
             mListener.get().onJsonMovieExtrasReady(results);
         } else if (mListener.get() != null && results == null) {
             //Offline, but might still be a favourite!
@@ -57,7 +57,7 @@ public class FetchJsonMovieExtrasTask extends AsyncTask<String, Void, FetchJsonM
             this.reviewsJsonString = reviewsJsonString;
         }
 
-        public boolean isNotNull() {
+        public boolean isNotHoldingNullVariables() {
             return (trailersJsonString != null) && (reviewsJsonString != null);
         }
 

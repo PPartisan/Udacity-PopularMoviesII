@@ -1,11 +1,8 @@
 package com.github.ppartisan.popularmoviesii.utils;
 
-import android.util.Log;
-
 import com.github.ppartisan.popularmoviesii.model.MovieModel;
 import com.github.ppartisan.popularmoviesii.model.ReviewModel;
 import com.github.ppartisan.popularmoviesii.model.TrailerModel;
-import com.github.ppartisan.popularmoviesii.utils.FetchJsonMovieDataUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

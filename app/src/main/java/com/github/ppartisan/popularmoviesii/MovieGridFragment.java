@@ -52,7 +52,6 @@ public class MovieGridFragment extends Fragment implements
 
     private MovieJsonStringReceiver mMovieJsonStringReceiver;
 
-    //Could save this value to SharedPreferences for persistence beyond app's scope. Future idea?
     private String sortPreference = FetchJsonMovieDataUtils.SORT_BY_POPULARITY;
 
     private boolean isShowingFavourites = false;

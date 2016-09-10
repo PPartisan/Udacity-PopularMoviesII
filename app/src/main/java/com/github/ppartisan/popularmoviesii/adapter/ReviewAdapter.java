@@ -78,6 +78,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
             expand = (ImageButton) itemView.findViewById(R.id.rr_open_btn);
 
             final int accent = ContextCompat.getColor(itemView.getContext(), R.color.accent);
+
             link.setColorFilter(accent, PorterDuff.Mode.MULTIPLY);
             expand.setColorFilter(accent, PorterDuff.Mode.MULTIPLY);
         }
@@ -100,7 +101,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.rr_link_btn:
-                mCallback.onAdapterItemLinkClick(mTargetUrl);
+                    mCallback.onAdapterItemLinkClick(mTargetUrl);
                     break;
                 case R.id.rr_open_btn:
                     mCallback.onAdapterItemExpandClick(position);

@@ -141,6 +141,7 @@ public class DetailFragment extends Fragment implements
         mReviewsRecyclerView.setNestedScrollingEnabled(false);
 
         final int primaryColor = ContextCompat.getColor(getContext(), R.color.primary);
+
         mCustomTabIntent = new CustomTabsIntent.Builder()
                 .setToolbarColor(primaryColor)
                 .setSecondaryToolbarColor(primaryColor)

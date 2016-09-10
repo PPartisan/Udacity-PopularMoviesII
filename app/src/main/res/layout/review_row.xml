@@ -26,7 +26,8 @@
             android:layout_weight="0"
             android:id="@+id/rr_link_btn"
             android:src="@drawable/ic_link_white_24dp"
-            style="@style/Base.Widget.AppCompat.Button.Borderless" />
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:contentDescription="@string/df_rl_link_content_desc"/>
 
         <ImageButton
             android:layout_width="48dp"
@@ -34,7 +35,8 @@
             android:layout_weight="0"
             android:id="@+id/rr_open_btn"
             android:src="@drawable/ic_open_in_new_white_24dp"
-            style="@style/Base.Widget.AppCompat.Button.Borderless"/>
+            style="@style/Base.Widget.AppCompat.Button.Borderless"
+            android:contentDescription="@string/df_rl_expand_content_desc"/>
 
     </LinearLayout>
 

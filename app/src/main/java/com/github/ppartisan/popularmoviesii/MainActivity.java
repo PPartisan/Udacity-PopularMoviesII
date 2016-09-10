@@ -63,7 +63,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onIsShowingFavouritesChange(boolean isShowingFavourites) {
-        DetailFragment frag = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_detail_container);
+        DetailFragment frag =
+                (DetailFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.fragment_detail_container);
 
         if (mIsTwoPane && frag != null) {
             frag.updateFavouriteUiElements(isShowingFavourites);

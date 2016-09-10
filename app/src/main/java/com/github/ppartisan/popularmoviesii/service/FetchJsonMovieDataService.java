@@ -3,16 +3,8 @@ package com.github.ppartisan.popularmoviesii.service;
 import android.app.IntentService;
 import android.content.Intent;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 
-import com.github.ppartisan.popularmoviesii.model.MovieModel;
 import com.github.ppartisan.popularmoviesii.utils.FetchJsonMovieDataUtils;
-import com.github.ppartisan.popularmoviesii.utils.JsonMovieDatabaseParser;
-
-import org.json.JSONException;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class FetchJsonMovieDataService extends IntentService {
 

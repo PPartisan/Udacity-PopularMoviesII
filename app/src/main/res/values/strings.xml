@@ -29,8 +29,10 @@
     <!-- Detail Fragment - Reviews List -->
     <string name="df_rl_title">Reviews</string>
     <string name="df_rl_expand_title">Review By: %1$s</string>
+    <string name="df_rl_expand_content_desc">Open Review In Pop-Up Window</string>
+    <string name="df_rl_link_content_desc">Open Review In Browser</string>
 
-    <!-- Detail Fragment - Snackbar -->
+    <!-- Detail Fragment - SnackBar -->
     <string name="df_sb_undo">Undo</string>
     <string name="df_sb_removed_from_favourites">Removed From Favourites</string>
     <string name="df_sb_added_to_favourites">Added To Favourites</string>
