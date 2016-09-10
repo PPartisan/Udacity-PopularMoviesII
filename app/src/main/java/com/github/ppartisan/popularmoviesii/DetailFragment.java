@@ -16,7 +16,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -222,7 +221,6 @@ public class DetailFragment extends Fragment implements
 
     @Override
     public void onAdapterItemLinkClick(String targetUrl) {
-        Log.d(getClass().getSimpleName(), targetUrl);
         mCustomTabIntent.launchUrl(getActivity(), Uri.parse(targetUrl));
     }
 

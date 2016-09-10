@@ -24,11 +24,11 @@ import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import com.github.ppartisan.popularmoviesii.adapter.MovieGridAdapter;
-import com.github.ppartisan.popularmoviesii.service.FetchJsonMovieDataService;
-import com.github.ppartisan.popularmoviesii.utils.JsonMovieDatabaseParser;
-import com.github.ppartisan.popularmoviesii.service.MovieJsonStringReceiver;
 import com.github.ppartisan.popularmoviesii.model.MovieModel;
+import com.github.ppartisan.popularmoviesii.service.FetchJsonMovieDataService;
+import com.github.ppartisan.popularmoviesii.service.MovieJsonStringReceiver;
 import com.github.ppartisan.popularmoviesii.utils.FetchJsonMovieDataUtils;
+import com.github.ppartisan.popularmoviesii.utils.JsonMovieDatabaseParser;
 import com.github.ppartisan.popularmoviesii.utils.MetricUtils;
 import com.github.ppartisan.popularmoviesii.utils.ViewUtils;
 
@@ -189,13 +189,13 @@ public class MovieGridFragment extends Fragment implements
                 String message;
 
                 if (!isShowingFavourites) {
-                    mCallbacks.launchFavouritesTask();
                     isShowingFavourites = true;
+                    mCallbacks.launchFavouritesTask();
                     updateFavouriteUiElements();
                     message = getString(R.string.df_action_favourites_showing);
                 } else {
-                    launchFetchMovieDataTask(sortPreference);
                     isShowingFavourites = false;
+                    launchFetchMovieDataTask(sortPreference);
                     updateFavouriteUiElements();
                     message = getString(R.string.df_action_live_data_showing);
                 }
@@ -230,8 +230,10 @@ public class MovieGridFragment extends Fragment implements
     }
 
     public void updateAdapter(List<MovieModel> models) {
-        mAdapter.setMovieModels(models);
-        restoreRecyclerViewState();
+        if (isShowingFavourites) {
+            mAdapter.setMovieModels(models);
+            restoreRecyclerViewState();
+        }
     }
 
     private void launchFetchMovieDataTask(String sortCode) {
