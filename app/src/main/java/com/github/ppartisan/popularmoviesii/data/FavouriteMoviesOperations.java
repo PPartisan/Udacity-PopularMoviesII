@@ -99,7 +99,7 @@ public interface FavouriteMoviesOperations {
 
             ContentProviderOperation extrasOp =
                     ContentProviderOperation.newDelete(ExtrasEntry.CONTENT_URI)
-                            .withSelection(where + "=?", whereArgs)
+                            .withSelection(where, whereArgs)
                             .build();
 
             ops.add(extrasOp);
