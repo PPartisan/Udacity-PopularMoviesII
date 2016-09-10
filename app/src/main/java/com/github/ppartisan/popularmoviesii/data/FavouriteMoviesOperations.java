@@ -88,17 +88,18 @@ public interface FavouriteMoviesOperations {
 
             final ArrayList<ContentProviderOperation> ops = new ArrayList<>(2);
 
-            final String[] whereArgs = new String[] {model.id };
+            final String where = MoviesEntry.COLUMN_MOVIE_ID + "=?";
+            final String[] whereArgs = new String[] { model.id };
 
             ContentProviderOperation movieOp =
                     ContentProviderOperation.newDelete(MoviesEntry.CONTENT_URI)
-                            .withSelection(MoviesEntry.COLUMN_MOVIE_ID + "=?", whereArgs)
+                            .withSelection(where, whereArgs)
                             .build();
             ops.add(movieOp);
 
             ContentProviderOperation extrasOp =
                     ContentProviderOperation.newDelete(ExtrasEntry.CONTENT_URI)
-                            .withSelection(ExtrasEntry.COLUMN_MOVIE_ID + "=?", whereArgs)
+                            .withSelection(where + "=?", whereArgs)
                             .build();
 
             ops.add(extrasOp);
