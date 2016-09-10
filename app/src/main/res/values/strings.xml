@@ -10,14 +10,17 @@
     <string name="action_sort_by_average_votes">Sort By: Highest Rated</string>
     <string name="action_favourites">Favourites</string>
 
+    <!-- Detail Menu -->
+    <string name="action_share">Share</string>
+
     <!-- Detail Fragment -->
     <string name="df_thumbnail_content_desc">Movie Poster Image</string>
     <string name="df_synopsis_title">Synopsis</string>
     <string name="df_rating_title">Rating</string>
     <string name="df_rating_content">%1$s out of 10</string>
     <string name="df_release_date_title">Release Date</string>
-    <string name="df_action_favourites_showing">Favourites Showing</string>
-    <string name="df_action_live_data_showing">Live Data Showing</string>
+    <string name="df_action_favourites_showing">Showing Favourites</string>
+    <string name="df_action_live_data_showing">Showing Live Data</string>
 
     <!-- Detail Fragment - Thumbnails List -->
     <string name="df_tl_title">Trailers</string>

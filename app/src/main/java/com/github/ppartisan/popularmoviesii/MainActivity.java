@@ -61,6 +61,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         getSupportLoaderManager().initLoader(0, null, MainActivity.this);
     }
 
+    @Override
+    public void onIsShowingFavouritesChange(boolean isShowingFavourites) {
+        DetailFragment frag = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_detail_container);
+
+        if (mIsTwoPane && frag != null) {
+            frag.updateFavouriteUiElements(isShowingFavourites);
+        }
+
+    }
+
     private void launchDetailActivity(MovieModel model) {
         Intent launchDetailActivityIntent = new Intent(this, DetailActivity.class);
         launchDetailActivityIntent.putExtra(DetailActivity.DETAIL_MODEL_KEY, model);

@@ -1,5 +1,6 @@
 package com.github.ppartisan.popularmoviesii;
 
+import android.content.Intent;
 import android.content.OperationApplicationException;
 import android.database.Cursor;
 import android.net.Uri;
@@ -15,7 +16,11 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -31,6 +36,7 @@ import com.github.ppartisan.popularmoviesii.model.ReviewModel;
 import com.github.ppartisan.popularmoviesii.model.TrailerModel;
 import com.github.ppartisan.popularmoviesii.utils.CursorMovieDatabaseParser;
 import com.github.ppartisan.popularmoviesii.utils.JsonMovieDatabaseParser;
+import com.github.ppartisan.popularmoviesii.utils.VideoUtils;
 import com.github.ppartisan.popularmoviesii.view.RatingsView;
 
 import com.squareup.picasso.Picasso;
@@ -62,6 +68,8 @@ public class DetailFragment extends Fragment implements
 
     private FloatingActionButton mFab;
 
+    private MenuItem mActionFavItem, mSortByItem;
+
     private boolean isFavourite = false;
 
     public static DetailFragment newInstance(MovieModel model) {
@@ -79,6 +87,7 @@ public class DetailFragment extends Fragment implements
         super.onCreate(savedInstanceState);
 
         setRetainInstance(true);
+        setHasOptionsMenu(true);
 
         if (jsonTask == null) {
             jsonTask = new FetchJsonMovieExtrasTask(
@@ -148,6 +157,30 @@ public class DetailFragment extends Fragment implements
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        if (mActionFavItem == null) {
+            mActionFavItem = menu.findItem(R.id.action_favorites);
+        }
+        if (mSortByItem == null) {
+            mSortByItem = menu.findItem(R.id.action_sort_parent);
+        }
+        inflater.inflate(R.menu.menu_detail, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.action_share:
+                launchShareTrailerUrlIntent();
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putBoolean(IS_FAVOURITE_KEY, isFavourite);
@@ -165,8 +198,10 @@ public class DetailFragment extends Fragment implements
                     mJsonParser.getReviewModelListFromJson(result.reviewsJsonString);
             final List<TrailerModel> trailers =
                     mJsonParser.getTrailerModelListFromJson(result.trailersJsonString);
+
             getModel().setReviews(reviews);
             getModel().setTrailers(trailers);
+
             mTrailersAdapter.setTrailers(getModel().getTrailers());
             mReviewsAdapter.setReviews(getModel().getReviews());
 
@@ -186,6 +221,7 @@ public class DetailFragment extends Fragment implements
 
     @Override
     public void onAdapterItemLinkClick(String targetUrl) {
+        Log.d(getClass().getSimpleName(), targetUrl);
         mCustomTabIntent.launchUrl(getActivity(), Uri.parse(targetUrl));
     }
 
@@ -243,6 +279,14 @@ public class DetailFragment extends Fragment implements
 
     }
 
+    public void updateFavouriteUiElements(boolean isShowingFavourites) {
+        final int resId = (isShowingFavourites)
+                ? R.drawable.ic_favorite_white_24dp
+                : R.drawable.ic_favorite_border_white_24dp;
+        mActionFavItem.setIcon(resId);
+        mSortByItem.setEnabled(!isShowingFavourites);
+    }
+
     private void launchFetchExtrasDataTask(boolean isOnline) {
 
         if (dataTask == null) {
@@ -264,6 +308,17 @@ public class DetailFragment extends Fragment implements
         } else {
             mFab.setImageResource(R.drawable.ic_favorite_border_white_24dp);
         }
+    }
+
+    private void launchShareTrailerUrlIntent() {
+
+        final TrailerModel trailer = getModel().getTrailers().get(0);
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, trailer.title);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, VideoUtils.getYouTubeUrlFromId(trailer.source));
+        shareIntent.setType("text/plain");
+        startActivity(shareIntent);
+
     }
 
     @SuppressWarnings("ConstantConditions")

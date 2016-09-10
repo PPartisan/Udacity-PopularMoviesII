@@ -275,6 +275,8 @@ public class MovieGridFragment extends Fragment implements
 
         mFavItem.setIcon(id);
 
+        mCallbacks.onIsShowingFavouritesChange(isShowingFavourites);
+
     }
 
     @Override
@@ -291,6 +293,7 @@ public class MovieGridFragment extends Fragment implements
 
         void onJsonMovieDataLoaded(MovieModel model);
         void launchFavouritesTask();
+        void onIsShowingFavouritesChange(boolean isShowingFavourites);
 
     }
 
