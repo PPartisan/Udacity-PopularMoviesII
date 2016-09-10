@@ -237,6 +237,11 @@ public class DetailFragment extends Fragment implements
     @Override
     public void onClick(View view) {
 
+        if (!verifyMovieModel()) {
+            failureSnackBar().show();
+            return;
+        }
+
         try {
             if (isFavourite) {
                 mFavouritesOps.deleteMovieModel(getModel());
@@ -311,6 +316,8 @@ public class DetailFragment extends Fragment implements
 
     private void launchShareTrailerUrlIntent() {
 
+        if(!verifyMovieModel()) return;
+
         final TrailerModel trailer = getModel().getTrailers().get(0);
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_SUBJECT, trailer.title);
@@ -378,6 +385,16 @@ public class DetailFragment extends Fragment implements
     private Snackbar removedSnackBar() {
         final String message = getString(R.string.df_sb_removed_from_favourites);
         return Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT);
+    }
+
+    @SuppressWarnings("ConstantConditions")
+    private Snackbar failureSnackBar() {
+        final String message = getString(R.string.df_sb_failure_content);
+        return  Snackbar.make(getView(), message, Snackbar.LENGTH_SHORT);
+    }
+
+    private boolean verifyMovieModel() {
+        return getModel() != null && getModel().getReviews() != null && getModel().getTrailers() != null;
     }
 
 }

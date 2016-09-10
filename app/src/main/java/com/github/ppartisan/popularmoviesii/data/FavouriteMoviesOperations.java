@@ -33,7 +33,12 @@ public interface FavouriteMoviesOperations {
         @Override
         public ContentProviderResult[] insertMovieModel(MovieModel model) throws RemoteException, OperationApplicationException {
 
+            if(model == null || model.getTrailers() == null || model.getReviews() == null) {
+                return null;
+            }
+
             final int listSize = 1 + model.getTrailers().size() + model.getReviews().size();
+
             final ArrayList<ContentProviderOperation> ops = new ArrayList<>(listSize);
 
             ContentProviderOperation movieOp =
@@ -85,6 +90,8 @@ public interface FavouriteMoviesOperations {
 
         @Override
         public ContentProviderResult[] deleteMovieModel(MovieModel model) throws RemoteException, OperationApplicationException {
+
+            if (model == null) return null;
 
             final ArrayList<ContentProviderOperation> ops = new ArrayList<>(2);
 

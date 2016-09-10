@@ -144,8 +144,6 @@
         android:id="@+id/df_fav"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        app:layout_anchor="@+id/df_nested_scroll_view"
-        app:layout_anchorGravity="bottom|right|end"
         app:layout_behavior="com.github.ppartisan.popularmoviesii.view.DetailFragmentFloatingActionButtonBehaviour"/>
 
 

@@ -37,6 +37,7 @@
     <string name="df_sb_removed_from_favourites">Removed From Favourites</string>
     <string name="df_sb_added_to_favourites">Added To Favourites</string>
     <string name="df_sb_restored_to_favourites">Restored To Favourites</string>
+    <string name="df_sb_failure_content">Cannot Add To Favourites</string>
 
     <!-- Error Dialog -->
     <string name="alert_no_connection_content">Connect to the internet for more results</string>
