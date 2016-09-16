@@ -8,7 +8,8 @@ public final class MetricUtils {
 
     public static int getColumnCountForViewWidth(View view) {
         final int columnWidth = Integer.parseInt(FetchJsonMovieDataUtils.IMAGE_WIDTH.substring(1));
-        return (int)Math.ceil(view.getWidth() / columnWidth);
+        final int columnCount = (int) Math.ceil(view.getWidth()/columnWidth);
+        return (columnCount < 1) ? 1 : columnCount;
     }
 
 }

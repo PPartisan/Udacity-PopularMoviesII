@@ -31,6 +31,7 @@ import com.github.ppartisan.popularmoviesii.utils.FetchJsonMovieDataUtils;
 import com.github.ppartisan.popularmoviesii.utils.JsonMovieDatabaseParser;
 import com.github.ppartisan.popularmoviesii.utils.MetricUtils;
 import com.github.ppartisan.popularmoviesii.utils.ViewUtils;
+import com.github.ppartisan.popularmoviesii.view.EmptyRecyclerView;
 
 import org.json.JSONException;
 
@@ -48,7 +49,7 @@ public class MovieGridFragment extends Fragment implements
     private JsonMovieDatabaseParser parser;
 
     private MovieGridAdapter mAdapter;
-    private RecyclerView mRecyclerView;
+    private EmptyRecyclerView mRecyclerView;
 
     private MovieJsonStringReceiver mMovieJsonStringReceiver;
 
@@ -94,9 +95,10 @@ public class MovieGridFragment extends Fragment implements
 
         mAdapter = new MovieGridAdapter(mCallbacks);
 
-        mRecyclerView = (RecyclerView) root.findViewById(R.id.fm_recycler);
+        mRecyclerView = (EmptyRecyclerView) root.findViewById(R.id.fm_recycler);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        mRecyclerView.setEmptyView(root.findViewById(R.id.empty_view));
         mRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(this);
 
         parser = new JsonMovieDatabaseParser();

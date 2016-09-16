@@ -17,7 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.github.ppartisan.popularmoviesii.DetailActivity" />
+        <activity
+            android:name="com.github.ppartisan.popularmoviesii.DetailActivity"
+            android:parentActivityName=".MainActivity"/>
 
         <service android:name=".service.FetchJsonMovieDataService" />
         <provider

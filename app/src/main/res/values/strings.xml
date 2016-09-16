@@ -25,6 +25,7 @@
     <!-- Detail Fragment - Thumbnails List -->
     <string name="df_tl_title">Trailers</string>
     <string name="df_tl_content_desc">Trailer Thumbnail Image</string>
+    <string name="df_tl_empty_text">No Data To Display</string>
 
     <!-- Detail Fragment - Reviews List -->
     <string name="df_rl_title">Reviews</string>
